@@ -23,6 +23,13 @@ module.exports = {
         use: {
           loader: 'babel-loader', // babel-loader -D 
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' }, // importa arquivo css
+          { loader: 'css-loader' }, // possibilita import dentro do css
+        ]
       }
     ]
   }
