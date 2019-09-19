@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 import TechItem from './TechItem';
 
 class TechList extends Component {
+  /*
+  // PROPRIEDADES ESTATICAS: Esquivalem ao DefaultProps:
+  static defaultProps = {
+    tech: 'Oculto'
+  }
+  */
+
   // para usar status sem um constructor:
   // yarn add @babel/plugin-proposal-class-properties -D
   state = {
@@ -45,18 +52,26 @@ class TechList extends Component {
               // icon={<Icon />}
               onDelete={() => this.handleDelete(tech)}
             />
-          )) }
+          )) 
+          }
+          { /* <TechItem tech="express JS" /> */ }
         </ul>
         <input 
           type="text" 
           onChange={this.handleInputChange} 
           value={this.state.newTech} 
-          
         />
         <button type="submit">Enviar</button>
       </form>
     );
   }
 }
+
+/*
+// Default Props tambem poderia ser usado aqui
+TechItem.defaultProps = {
+  tech: 'oculto',
+}
+*/
 
 export default TechList;
