@@ -30,6 +30,12 @@ module.exports = {
           { loader: 'style-loader' }, // importa arquivo css
           { loader: 'css-loader' }, // possibilita import dentro do css
         ]
+      },
+      {
+        test: /.*\.(gif|png|jpe?g)$/i,
+        use: {
+          loader: 'file-loader',
+        }
       }
     ]
   }
