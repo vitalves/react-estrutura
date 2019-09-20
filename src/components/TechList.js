@@ -19,12 +19,44 @@ class TechList extends Component {
   // yarn add @babel/plugin-proposal-class-properties -D
   state = {
     newTech: '',
-    techs: [
-      'Node.js',
-      'React JS',
-      'React Netive',
-    ],
+    techs: [],
+      // 'Node.js',
+      // 'React JS',
+      // 'React Netive',
+   // ],
   };
+
+  /* CICLO DE VIDA DO COMPONENTE */
+  // Executado no momento que o componente aparece na teça
+  componentDidMount(){
+    // carregar os dados do localStorage
+    const techs = localStorage.getItem('techs');
+
+    // se houver dados no localStorage
+    if (techs) {
+      this.setState({ techs: JSON.parse(techs) })
+    }
+
+  }
+
+  // Executado sempre que houver alteracoes nas props ou estados
+  // componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_, prevState) {
+    // this.props; this.state
+    // quando nao utiliza prevProps ou prevState usa um underline _
+    // verificar se o estado anterior esta diferente do atual:
+    if (prevState.techs !== this.state.techs) {
+      // Transfoema em JSON 'JSON.stringify()' e salva no localStorage do Browser
+      localStorage.setItem('techs', JSON.stringify(this.state.techs));
+    }
+  }
+
+  // Executado quando o componente deixa de existir
+  componentWillUnmount(){
+    // serve para limpar sujeiras que componentes possam deixa na App 
+  }
+
+  /*Ciclo de vida do componente*/
 
   handleInputChange = e => {
     // console.log(e.target.value);
@@ -38,10 +70,14 @@ class TechList extends Component {
       techs: [...this.state.techs, this.state.newTech ],
       newTech: '',
     });
+
+    // localStorage.setItem (deixaria redundante: insere no componentDidUpdate)
   }
 
   handleDelete = (tech) => {
     this.setState({ techs: this.state.techs.filter(t => t !== tech ) })
+
+    // localStorage.setItem (deixaria redundante: insere no componentDidUpdate)
   }
 
   render() {
