@@ -8,6 +8,11 @@ class TechList extends Component {
   static defaultProps = {
     tech: 'Oculto'
   }
+  // propTypes TAMBEM PODEM SER INSERIDAS AQUI
+  static propTypes = {
+    tech: PropTypes.string,
+    onDelete: PropTypes.func.isRequired,
+  }
   */
 
   // para usar status sem um constructor:
