@@ -1,4 +1,4 @@
-// para alterar o caminho de entry: 'src/index.js' para: path.resolve(__dirname, 'src', 'index.js'); 
+// para alterar o caminho de entry: 'src/index.js' para: path.resolve(__dirname, 'src', 'index.js');
 const path = require('path');
 
 module.exports = {
@@ -19,9 +19,9 @@ module.exports = {
     rules: [
       {
         test: /\.js$/, // encontre arquivo que termine em ".js"
-        exclude: /node_modules/, // ignora tudo da pasta informada 
+        exclude: /node_modules/, // ignora tudo da pasta informada
         use: {
-          loader: 'babel-loader', // babel-loader -D 
+          loader: 'babel-loader', // babel-loader -D
         }
       },
       {
